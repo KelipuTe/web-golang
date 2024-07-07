@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+
+<body>
+<form >
+    <div class="form-group">
+        <label for="email">邮箱</label>
+        <input type="email" id="email" required />
+    </div>
+    <div class="form-group">
+        <label for="password">密码</label>
+        <input type="password" id="password" required />
+    </div>
+    <div class="form-group">
+        <label for="confirmPassword">确认密码</label>
+        <input type="password" id="confirmPassword" required />
+    </div>
+    <button id="registerForm" type="submit">注册</button>
+</form>
+</body>
+
+<!-- 引入 Axios -->
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+<script>
+    document.getElementById('registerForm').onclick= function() {
+        console.log(111);
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let confirmPassword = document.getElementById('confirmPassword').value;
+
+        axios.post('http://localhost:8502/api/user/signup', {
+            email: email,
+            password: password
+        }).then(function (response) {
+            console.log(response);
+        })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
+</script>
+
+</html>
